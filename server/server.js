@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios');
 const path = require('path');
 const port = 3000;
 
@@ -9,8 +10,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve('public')));
 
-app.get('/game_carousel_info', (req, res) => {
-  console.log(req.query.id);
+app.get('/game_carousel_info', async (req, res) => {
+  const gameId = req.query.id;
+  try {
+    const { data } = await axios.get(`http://localhost:3008/game_carousel_info?id=${gameId}`)
+    res.json(data);
+  } catch(err) {
+    res.status(500).send({ internalServerError: err });
+  }
+
 });
 
 app.listen(port, () => {
