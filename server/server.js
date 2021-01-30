@@ -11,10 +11,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve('public')));
 
 app.get('/game_carousel_info', async (req, res) => {
+  console.log('first request')
   const gameId = req.query.id;
   try {
     const { data } = await axios.get(`http://localhost:3008/game_carousel_info?id=${gameId}`)
     res.json(data);
+  } catch(err) {
+    res.status(500).send({ internalServerError: err });
+  }
+
+});
+
+app.get('/reviews', async (req, res) => {
+  console.log('second request')
+  const gameId = req.query.id;
+  try {
+    const responseData = await axios.get(`http://localhost:3001/reviews?id=${gameId}`)
+    console.log('after request', responseData);
+    res.send(responseData);
   } catch(err) {
     res.status(500).send({ internalServerError: err });
   }
