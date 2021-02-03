@@ -11,8 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve('public')));
 
 app.get('/game_carousel_info', async (req, res) => {
-  console.log('first request')
   const gameId = req.query.id;
+  console.log(req.headers);
   try {
     const { data } = await axios.get(`http://localhost:3008/game_carousel_info?id=${gameId}`)
     res.json(data);
@@ -23,7 +23,6 @@ app.get('/game_carousel_info', async (req, res) => {
 });
 
 app.get('/reviews', async (req, res) => {
-  console.log('second request')
   const gameId = req.query.id;
   try {
     const responseData = await axios.get(`http://localhost:3001/reviews?id=${gameId}`)
