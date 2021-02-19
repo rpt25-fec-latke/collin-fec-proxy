@@ -26,8 +26,8 @@ app.get('/reviews', async (req, res) => {
   console.log("what the f")
   const gameId = req.query.id;
   try {
-    const responseData = await axios.get(`http://204.236.178.72:3001/reviews?id=${gameId}`)
-    res.send(responseData);
+    let { data } = await axios.get(`http://204.236.178.72:3001/reviews?id=${gameId}`)
+    res.send(data);
   } catch(err) {
     console.log(err);
     res.status(500).send({ internalServerError: err });
