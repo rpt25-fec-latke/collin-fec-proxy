@@ -13,7 +13,7 @@ app.use(express.static(path.resolve('public')));
 app.get('/game_carousel_info', async (req, res) => {
   const gameId = req.query.id;
   try {
-    const { data } = await axios.get(`http://localhost:3008/game_carousel_info?id=${gameId}`)
+    const { data } = await axios.get(`http://3.137.75.100:3008/game_carousel_info?id=${gameId}`)
     res.json(data);
   } catch(err) {
     res.status(500).send({ internalServerError: err });
@@ -25,7 +25,7 @@ app.get('/reviews', async (req, res) => {
   console.log("what the f")
   const gameId = req.query.id;
   try {
-    const responseData = await axios.get(`http://localhost:3001/reviews?id=${gameId}`)
+    const responseData = await axios.get(`http://204.236.178.72:3001/reviews?id=${gameId}`)
     res.send(responseData);
   } catch(err) {
     res.status(500).send({ internalServerError: err });
