@@ -22,6 +22,7 @@ app.get('/game_carousel_info', async (req, res) => {
 });
 
 app.get('/reviews', async (req, res) => {
+  console.log("what the f")
   const gameId = req.query.id;
   try {
     const responseData = await axios.get(`http://localhost:3001/reviews?id=${gameId}`)
