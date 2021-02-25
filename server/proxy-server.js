@@ -24,6 +24,7 @@ app.get('/game_carousel_info', async (req, res) => {
 
 app.get('/morelikethis', async (req, res) => {
   const gameId = req.query.id;
+  //3.137.75.100
   try {
     const { data } = await axios.get(`http://3.137.75.100:3002/morelikethis?id=${gameId}`)
     res.json(data);

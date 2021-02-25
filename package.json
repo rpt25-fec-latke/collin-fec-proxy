@@ -4,7 +4,7 @@
   "description": "Collin's Proxy",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/proxy-server.js"
   },
   "repository": {
     "type": "git",
