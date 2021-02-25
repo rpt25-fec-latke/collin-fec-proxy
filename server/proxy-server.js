@@ -48,6 +48,19 @@ app.get('/reviews', async (req, res) => {
 
 });
 
+app.get('/events_and_announcements', async (req, res) => {
+  //204.236.178.72
+  const gameId = req.query.id;
+  try {
+    let { data } = await axios.get(`http://204.236.178.72:3007/events_and_announcements?id=${gameId}`)
+    res.send(data);
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({ internalServerError: err });
+  }
+
+});
+
 app.get('/metadata', async (req, res) => {
   console.log('here');
   const gameId = req.query.id;
