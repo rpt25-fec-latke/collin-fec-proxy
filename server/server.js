@@ -22,7 +22,20 @@ app.get('/game_carousel_info', async (req, res) => {
 
 });
 
+app.get('/morelikethis', async (req, res) => {
+  const gameId = req.query.id;
+  try {
+    const { data } = await axios.get(`http://3.137.75.100:3002/morelikethis?id=${gameId}`)
+    res.json(data);
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({ internalServerError: err });
+  }
+
+});
+
 app.get('/reviews', async (req, res) => {
+  //204.236.178.72
   const gameId = req.query.id;
   try {
     let { data } = await axios.get(`http://204.236.178.72:3001/reviews?id=${gameId}`)
