@@ -15,7 +15,7 @@ app.use(express.static(path.resolve('public')));
 app.get('/game_carousel_info', async (req, res) => {
   const gameId = req.query.id;
   try {
-    const { data } = await axios.get(`http://localhost:3008/game_carousel_info?id=${gameId}`)
+    const { data } = await axios.get(`http://3.137.75.100:3008/game_carousel_info?id=${gameId}`)
     res.json(data);
   } catch(err) {
     console.log(err);
